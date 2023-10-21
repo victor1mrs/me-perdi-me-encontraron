@@ -1,8 +1,16 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
 
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import Link from 'next/link'
+
 const inter = Inter({ subsets: ['latin'] })
+
+const links = [
+  {href: '/', label: 'Home'},
+  {href: '/docs', label: 'Docs'},
+  {href: '/todos', label: 'Todos'}
+]
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,7 +24,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <header>
+          <nav>
+            <ul className='flex items-center gap-2'>
+              {links.map(link => (
+                <li key={link.href}>
+                  <Link href={link.href}>{link.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </header>
+        {children}
+      </body>
     </html>
   )
 }
