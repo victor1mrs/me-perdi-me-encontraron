@@ -14,7 +14,7 @@ export default function RootLayout({
     <div>
       <nav className="bg-primary p-4">
         <div className="container mx-auto flex justify-between items-center">
-          <div className="text-white font-bold text-xl">MascoTinder</div>
+          <Link href={'/'} className="text-white font-bold text-xl">MascoTinder</Link>
           <ul className="flex items-center gap-4">
             {links.map((link) => (
               <li key={link.href}>
