@@ -1,8 +1,9 @@
 import Link from 'next/link'
 
 const links = [
-  { href: '/instagram', label: 'Instagram' },
-  { href: '/new-user', label: 'Register' },
+  { href: '/new-pet-found', label: 'New Pet Found' },
+  { href: '/lost-a-pet', label: 'I Lost a Pet' },
+  { href: '/profiles', label: 'List Pets' },
 ]
 
 export default function RootLayout({
