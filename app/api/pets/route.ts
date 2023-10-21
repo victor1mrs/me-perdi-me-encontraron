@@ -1,15 +1,13 @@
 import db from '@/utils/db'
 import { NextResponse } from 'next/server'
 
-// export const GET = async () => {
-//   const data = await db.todo.findMany({})
-//   return NextResponse.json({ data })
-// }
+export const GET = async () => {
+  const data = await db.pet.findMany()
+  return NextResponse.json({ data })
+}
 
 export const POST = async (request: Request) => {
   const request_data = await request.json()
-  console.log('iasdbflasidnjliasudfliasndfkljaslidfjnaslidjflisadunfilasndlfiuasldifnuaslidf')
-  console.log(request_data);
   let pet_location = await db.location.findUnique({
     where: { google_place_id: request_data.location.google_place_id },
   });
