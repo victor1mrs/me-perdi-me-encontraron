@@ -48,8 +48,12 @@ const Profiles = async ({searchParams}: ProfilesProps) => {
       console.error(error)
     }
   }
-  const {lat, lng, google_place_id, name}: GeocodeData = await handleGeocode()
-  // const profiles = await axios.get(`http://127.0.0.1:3000/api/pets?lat=${lat}&long=${lng}&status=${status}`)
+  const res = await handleGeocode()
+  if(res && res.lat && res.lng && res.google_place_id && res.name) {
+    const {lat, lng, google_place_id, name}: GeocodeData = await handleGeocode()
+    // const profiles = await axios.get(`http://127.0.0.1:3000/api/pets?lat=${lat}&long=${lng}&status=${status}`)
+  }
+  
   const profiles: ProfileType[] = mockedUsers;
   return <div>
     <PetProfiles profiles={profiles} />

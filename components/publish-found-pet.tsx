@@ -112,7 +112,7 @@ const PublishFoundPet = () => {
             </div>
           </CardContent>
           <CardFooter>
-            <Button className="w-full" type="submit" onClick={handleClick}>
+            <Button className="w-full text-white" type="submit" onClick={handleClick}>
               Publicar!
             </Button>
           </CardFooter>

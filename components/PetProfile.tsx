@@ -23,7 +23,6 @@ const PetProfiles = ({ profiles }: ProfilesProps) => {
       setProfileIdx(profileIdx + 1)
     }
   }
-  console.log(profiles)
 
   return (
     <div>
