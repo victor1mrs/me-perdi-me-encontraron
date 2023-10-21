@@ -1,9 +1,10 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
+// TODO: modify 'I lost a Pet link'
 const links = [
   { href: '/new-pet-found', label: 'New Pet Found' },
-  { href: '/lost-a-pet', label: 'I Lost a Pet' },
+  { href: '/new-pet-found', label: 'I Lost a Pet' },
   { href: '/profiles', label: 'List Pets' },
 ]
 

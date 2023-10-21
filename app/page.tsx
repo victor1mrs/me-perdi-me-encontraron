@@ -32,7 +32,8 @@ export default function Home() {
                 </p>
               </div>
             </Link>
-            <Link href={'/new-user'}>
+            {/* TOFO: Modify href */}
+            <Link href={'/new-pet-found'}>
               <div className="flex items-center w-full md:p-8 p-4 bg-secondary min-h-fit h-40 mb-4 rounded-xl  hover:bg-secondary/70 transition-colors duration-300">
                 <p className="text-white md:text-4xl text-xl font-semibold">
                   Perdí mi mascota
