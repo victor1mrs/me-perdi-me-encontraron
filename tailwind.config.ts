@@ -13,6 +13,12 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      colors: {
+        primary: '#F35870',
+        secondary: '#F87F92',
+        success: '#41DB7E',
+        disabled: '#9C9C9C',
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
