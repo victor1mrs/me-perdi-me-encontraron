@@ -1,8 +1,6 @@
 import Link from "next/link"
 
 const links = [
-  { href: '/', label: 'Home' },
-  { href: '/docs', label: 'Docs' },
   { href: '/instagram', label: 'Instagram' },
   { href: '/new-user', label: 'Register' },
 ]
@@ -15,7 +13,7 @@ export default function RootLayout({
   return (
     <nav className="bg-primary p-4">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="text-white font-bold text-xl">MascoTinder</div>
+        <div className="text-white font-bold text-xl"><Link href="/">MascoTinder</Link></div>
         <ul className="flex items-center gap-4">
           {links.map((link) => (
             <li key={link.href}>
@@ -86,6 +84,6 @@ export default function RootLayout({
           </Link>
         </div>
       </div>
-    </nav>
+    </nav >
   )
 }
