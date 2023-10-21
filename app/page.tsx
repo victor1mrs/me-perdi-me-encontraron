@@ -11,7 +11,12 @@ const links = [
 export default function Home() {
   return (
     <div className="flex">
-      <div className="h-screen w-1/2 bg-primary"></div>
+      <div className="h-screen w-1/2 bg-primary">
+        <div className="flex flex-col justify-center items-center h-full">
+          <div className="text-white font-bold text-6xl">MascoTinder</div>
+          <div className="text-white font-bold text-2xl">Find your pet's soulmate</div>
+        </div>
+      </div>
       <div className="m-auto">
         <div>
           <ul className="flex flex-col items-center gap-4">
