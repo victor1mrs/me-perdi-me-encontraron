@@ -1,10 +1,10 @@
 import React from 'react'
-import { RegisterForm } from '@/components/register-form'
+import PublishFoundPet from "@/components/publish-found-pet"
 
 const NewUser = () => {
   return (
     <div>
-      <RegisterForm />
+      <PublishFoundPet />
     </div>
   )
 }

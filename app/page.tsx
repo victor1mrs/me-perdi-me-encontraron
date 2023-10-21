@@ -2,8 +2,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 const links = [
-  { href: '/instagram', label: 'Instagram' },
-  { href: '/new-user', label: 'Register' },
+  { href: '/new-pet-found', label: 'New Pet Found' },
+  { href: '/lost-a-pet', label: 'I Lost a Pet' },
   { href: '/profiles', label: 'Profiles' },
 ]
 
@@ -25,7 +25,7 @@ export default function Home() {
             <h3 className="text-white font-bold md:text-4xl text-xl mb-12">
               Elegí una de las opciones
             </h3>
-            <Link href={'/new-user'}>
+            <Link href={'/new-pet-found'}>
               <div className="flex items-center w-full md:p-10 p-4 bg-secondary min-h-fit h-52 mb-4 rounded-xl">
                 <p className="text-white md:text-4xl text-xl font-semibold">
                   Encontré una mascota perdida
