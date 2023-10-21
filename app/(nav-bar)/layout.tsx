@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const links = [
   { href: '/instagram', label: 'Instagram' },
@@ -14,7 +15,15 @@ export default function RootLayout({
     <div>
       <nav className="bg-primary p-4">
         <div className="container mx-auto flex justify-between items-center">
-          <Link href={'/'} className="text-white font-bold text-xl">MascoTinder</Link>
+          <Link href={'/'} className="text-white font-bold text-3xl flex gap-2">
+            <Image
+              src="/logo.svg"
+              width={36}
+              height={36}
+              alt="FinPet mini logo"
+            />
+            <span>FindPet</span>
+          </Link>
           <ul className="flex items-center gap-4">
             {links.map((link) => (
               <li key={link.href}>
