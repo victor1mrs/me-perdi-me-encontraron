@@ -24,7 +24,7 @@ function GeoClient() {
 
             {coordinates && (
                 <div>
-                    Latitude: {coordinates.lat}, Longitude: {coordinates.lng}, Place Id: {coordinates.google_place_id}
+                    LonName: {coordinates.name}, Latitude: {coordinates.lat}, Longitude: {coordinates.lng}, Place Id: {coordinates.google_place_id}
                 </div>
             )}
         </div>
