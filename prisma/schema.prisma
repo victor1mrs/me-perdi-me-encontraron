@@ -9,3 +9,30 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+enum Status {
+  Found
+  Lost
+  Rejoined
+}
+
+model Location {
+  id       Int     @id @default(autoincrement())
+  city_name String
+  lat      Float
+  long     Float
+  google_place_id String @unique
+  pets     Pet[]
+}
+
+model Pet {
+  id             Int       @id @default(autoincrement())
+  name           String
+  date_found     DateTime
+  location_found Location  @relation(fields: [locationId], references: [id])
+  locationId     Int
+  email          String
+  phone          String
+  picture_url    String
+  status         Status
+}
