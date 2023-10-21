@@ -20,6 +20,7 @@ export const GET = async (request: Request) => {
             const loc = response.data.results[0];
             let latlon = loc.geometry.location
             latlon.google_place_id = loc.place_id
+            latlon.name = loc.address_components[0].long_name
             return new Response(JSON.stringify(latlon), { status: 200 })
         } else {
             return new Response('Geocoding request failed', { status: 400 })
