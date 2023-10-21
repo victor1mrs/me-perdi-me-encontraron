@@ -6,23 +6,43 @@ import { Input } from "@/components/ui/input"
 import { SelectValue, SelectTrigger, SelectLabel, SelectItem, SelectGroup, SelectContent, Select } from "@/components/ui/select"
 import { Button } from "@/components/ui/button"
 import axios from "axios"
+import { useState } from 'react';
 
 const PublishFoundPet = () => {
+  // State to manage input values
+  const [formData, setFormData] = useState({
+    sex: '',
+    type: '',
+    color: '',
+    direccion: '',
+    descripcion: '',
+    email: '',
+  });
 
+  // Function to handle form input changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  // Function to handle the POST request
   const handleClick = async () => {
     try {
       const response = await axios.post('http://localhost:3000/api/pets/', {
-        name: 'Fido',
-        date_found: '2023-10-23T12:00:00Z',
+        name: formData.sex, // Assuming you want to use 'sex' as the 'name'
+        date_found: new Date().toISOString(), // Current timestamp
         location: {
-          google_place_id: 'aosdfpasdnfpsadf',
-          lat: 40.7128,
-          long: -74.0060,
-          city_name: 'New York',
+          google_place_id: '', // You can add the appropriate value
+          lat: 0, // You can add the appropriate value
+          long: 0, // You can add the appropriate value
+          city_name: '', // You can add the appropriate value
         },
-        email: 'fido@example.com',
-        phone: '123-456-7890',
-        picture_url: 'https://example.com/fido.jpg',
+        email: formData.email,
+        phone: '', // You can add the appropriate value
+        picture_url: '', // You can add the appropriate value
         status: 'Found',
       });
 
@@ -46,7 +66,7 @@ const PublishFoundPet = () => {
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Select id="sex" required>
+                  <Select id="sex" name="sex" value={formData.sex} onChange={handleInputChange} required>
                     <SelectTrigger>
                       <SelectValue placeholder="Macho / Hembra" />
                     </SelectTrigger>
@@ -59,7 +79,7 @@ const PublishFoundPet = () => {
                   </Select>
                 </div>
                 <div className="space-y-2">
-                  <Select id="sex" required>
+                  <Select id="type" name="type" value={formData.type} onChange={handleInputChange} required>
                     <SelectTrigger>
                       <SelectValue placeholder="Tipo" />
                     </SelectTrigger>
@@ -75,19 +95,19 @@ const PublishFoundPet = () => {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="color">Color</Label>
-                <Input id="color" placeholder="Color" required />
+                <Input id="color" name="color" value={formData.color} onChange={handleInputChange} placeholder="Color" required />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="direccion">Direccion donde la encontrate</Label>
-                <Input id="direccion" placeholder="Direccion" required />
+                <Input id="direccion" name="direccion" value={formData.direccion} onChange={handleInputChange} placeholder="Direccion" required />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="descripcion">Descripcion</Label>
-                <Input id="descripcion" placeholder="Descripcion" required />
+                <Input id="descripcion" name="descripcion" value={formData.descripcion} onChange={handleInputChange} placeholder="Descripcion" required />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" placeholder="johndoe@example.com" required type="email" />
+                <Input id="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="johndoe@example.com" required type="email" />
               </div>
             </div>
           </CardContent>
@@ -97,10 +117,10 @@ const PublishFoundPet = () => {
             </Button>
           </CardFooter>
         </Card>
-      </div>x
+      </div>
     </div>
-  )
-}
+  );
+};
 
 
 export default PublishFoundPet;
