@@ -7,8 +7,14 @@ import { SelectValue, SelectTrigger, SelectLabel, SelectItem, SelectGroup, Selec
 import { Button } from "@/components/ui/button"
 import axios from "axios"
 import { useState } from 'react';
+import { Web3Storage, getFilesFromPath } from 'web3.storage'
+
 
 const PublishFoundPet = () => {
+
+  const ASSETS = "/";
+  const WEB3_TOKEN = process.env.WEB3_TOKEN;
+
   // State to manage input values
   const [formData, setFormData] = useState({
     sex: '',
@@ -31,6 +37,10 @@ const PublishFoundPet = () => {
   // Function to handle the POST request
   const handleClick = async () => {
     try {
+
+      submitFiles();
+
+
       const response = await axios.post('http://localhost:3000/api/pets/', {
         name: formData.sex, // Assuming you want to use 'sex' as the 'name'
         date_found: new Date().toISOString(), // Current timestamp
@@ -53,6 +63,36 @@ const PublishFoundPet = () => {
       // Handle errors.
     }
   };
+
+  const submitFiles = async () => {
+    // iasdbflasidnjliasudfliasndfkljaslidfjnaslidjflisadunfilasndlfiuasldifnuaslidf
+    // const storage = new Web3Storage({ token: WEB3_TOKEN})
+    // const files = await getFilesFromPath(ASSETS)
+    // const cid = await storage.put(files)
+    // console.log(`IPFS CID: ${cid}`)
+    // console.log(`Gateway URL: https://dweb.link/ipfs/${cid}`)
+    const client = new Web3Storage({ token: WEB3_TOKEN })
+
+    const fileInput = document.querySelector('input[type="file"]')
+
+    console.log(fileInput);
+
+    // Pack files into a CAR and send to web3.storage
+    const rootCid = await client.put(fileInput.files) // Promise<CIDString>
+
+    console.log(rootCid);
+
+    // Get info on the Filecoin deals that the CID is stored in
+    const info = await client.status(rootCid) // Promise<Status | undefined>
+
+    // Fetch and verify files from web3.storage
+    const res = await client.get(rootCid) // Promise<Web3Response | null>
+    const files = await res.files() // Promise<Web3File[]>
+
+    for (const file of files) {
+      console.log(`${file.cid} ${file.name} ${file.size}`)
+    }
+  }
 
   return (
     <div className="flex flex-col h-screen">
@@ -108,6 +148,10 @@ const PublishFoundPet = () => {
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
                 <Input id="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="johndoe@example.com" required type="email" />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="file">Foto</Label> <br />
+                <input type="file" id="file" name="file" value={formData.file} onChange={handleInputChange} />
               </div>
             </div>
           </CardContent>
