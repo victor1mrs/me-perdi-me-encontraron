@@ -26,7 +26,7 @@ export default function Home() {
               Elegí una de las opciones
             </h3>
             <Link href={'/new-pet-found'}>
-              <div className="flex items-center w-full md:p-10 p-4 bg-secondary min-h-fit h-52 mb-4 rounded-xl">
+              <div className="flex items-center w-full md:p-8 p-4 bg-secondary min-h-fit h-40 mb-4 rounded-xl  hover:bg-secondary/70 transition-colors duration-300">
                 <p className="text-white md:text-4xl text-xl font-semibold">
                   Encontré una mascota perdida
                 </p>
